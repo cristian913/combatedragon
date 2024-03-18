@@ -13,6 +13,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class ventana extends JFrame {
+	private JLabel personaje;
+	private JLabel ataque;
 	int x,y;
 	
 	private JPanel contentPane;
@@ -38,6 +40,7 @@ public class ventana extends JFrame {
 	 */
 
 	public ventana() {
+		
 		/*
 		String url = System.getProperty("user.dir"+"\\goku\\");
 		public combo() {
@@ -70,11 +73,14 @@ public class ventana extends JFrame {
 		personaje.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/0.png")));
 		contenedor_personaje.add(personaje);
 		
+		JLabel ataque = new JLabel("");
+	
+	/*
 		JLabel fondo = new JLabel("");
 		fondo.setBounds(-452, -108, 1634, 800);
 		fondo.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/fondo.png")));
 		contenedor_personaje.add(fondo);
-		/*
+			
 		public void teclaX() {
 			ImageIcon foco;
 			foco = new ImageIcon(getClass().getResource("/goku/0.png"));
@@ -136,17 +142,24 @@ public class ventana extends JFrame {
 				case KeyEvent.VK_NUMPAD9:
 					personaje.setLocation(x+8,y-8);
 					break;
+				
 				case KeyEvent.VK_X:
-					Icon icono;
-					icono=new ImageIcon(getClass().getResource("/goku/2.png"));
-					personaje.setIcon(icono);
-					System.out.print(personaje);
+				
+					ataque.setBounds(x+14, y, 136, 210);
+					ataque.setIcon(new ImageIcon(ventana.class.getResource("/ataques/13.png")));
+					contenedor_personaje.add(ataque);
 					break;
 				case KeyEvent.VK_Z:
-			
+					personaje.setBounds(x, y, 136, 210);
+					personaje.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/5.png")));
+					contenedor_personaje.add(personaje);
+				
+				
 					break;
 				case KeyEvent.VK_Y:
-					
+					personaje.setBounds(x, y, 136, 210);
+					personaje.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/1.png")));
+					contenedor_personaje.add(personaje);
 					break;
 					
 					
