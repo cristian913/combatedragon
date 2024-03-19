@@ -1,6 +1,6 @@
 package combatateball;
 import java.awt.EventQueue;
-
+import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -132,39 +132,59 @@ public class ventana extends JFrame {
 					//*volar  diagonal*//
 				case KeyEvent.VK_NUMPAD7:
 					personaje.setLocation(x-8,y-8);
+					personaje.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/5.png")));
+					contenedor_personaje.add(personaje);
 					break;
 				case KeyEvent.VK_NUMPAD3:
 					personaje.setLocation(x+8,y+8);
+					personaje.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/23.png")));
+					contenedor_personaje.add(personaje);
 					break;
 				case KeyEvent.VK_NUMPAD1:
 					personaje.setLocation(x-8,y+8);
+					personaje.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/5.png")));
+					contenedor_personaje.add(personaje);
 					break;
 				case KeyEvent.VK_NUMPAD9:
 					personaje.setLocation(x+8,y-8);
+					personaje.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/23.png")));
+					contenedor_personaje.add(personaje);
+					
 					break;
 				
 				case KeyEvent.VK_X:
+					personaje.setBounds(x, y, 136, 210);
+					personaje.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/9.png")));
+					contenedor_personaje.add(personaje);
 				
-					ataque.setBounds(x+14, y, 136, 210);
-					ataque.setIcon(new ImageIcon(ventana.class.getResource("/ataques/13.png")));
-					contenedor_personaje.add(ataque);
 					break;
 				case KeyEvent.VK_Z:
 					personaje.setBounds(x, y, 136, 210);
-					personaje.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/5.png")));
+					personaje.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/8.png")));
 					contenedor_personaje.add(personaje);
 				
 				
+					break;
+				case KeyEvent.VK_C:
+					personaje.setBounds(x, y, 136, 210);
+					personaje.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/21.png")));
+					contenedor_personaje.add(personaje);
+					break;
+				case KeyEvent.VK_V:
+					ataque.setBounds(x+14, y, 136, 210);
+					ataque.setIcon(new ImageIcon(ventana.class.getResource("/ataques/13.png")));
+					contenedor_personaje.add(ataque);
+					
+					
+					
+					int contador = 0;
+					while (contador < 5) {
+						ataque.setLocation(x+8,y);
+					    contador++;
+					}
 					break;
 				case KeyEvent.VK_Y:
-					personaje.setBounds(x, y, 136, 210);
-					personaje.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/1.png")));
-					contenedor_personaje.add(personaje);
-					break;
-				case KeyEvent.VK_B:
-					personaje.setBounds(x, y, 136, 210);
-					personaje.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/1.png")));
-					contenedor_personaje.add(personaje);
+				
 					break;
 					
 					
