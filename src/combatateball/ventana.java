@@ -161,7 +161,11 @@ public class ventana extends JFrame {
 					personaje.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/1.png")));
 					contenedor_personaje.add(personaje);
 					break;
-					
+				case KeyEvent.VK_C:
+					personaje.setBounds(x, y, 136, 210);
+					personaje.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/1.png")));
+					contenedor_personaje.add(personaje);
+					break;
 					
 					
 				
