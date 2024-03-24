@@ -1,29 +1,26 @@
 package combatateball;
 import java.awt.EventQueue;
-import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.swing.Icon;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Color;
-import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JProgressBar;
 
 public class ventana extends JFrame {
-	private JLabel personaje;
-	private JLabel ataque;
 	int x,y;
 	
 	private JPanel contentPane;
@@ -154,10 +151,21 @@ public class ventana extends JFrame {
 		salir.setBounds(833, 11, 89, 23);
 		contenedor_personaje.add(salir);
 		
+		JProgressBar vidajugador1 = new JProgressBar();
+		vidajugador1.setStringPainted(true);
+		vidajugador1.setForeground(new Color(0, 128, 128));
+		vidajugador1.setValue(100);
+		vidajugador1.setBounds(38, 36, 281, 23);
+		contenedor_personaje.add(vidajugador1);
 		
+		JProgressBar progressBar_1 = new JProgressBar();
+		progressBar_1.setValue(100);
+		progressBar_1.setStringPainted(true);
+		progressBar_1.setForeground(new Color(0, 128, 128));
+		progressBar_1.setBounds(699, 48, 281, 23);
+		contenedor_personaje.add(progressBar_1);
 		
 
-		
 	
 		
 	
@@ -240,49 +248,92 @@ public class ventana extends JFrame {
 					break;
 				
 				case KeyEvent.VK_X:
-					personaje1.setLocation(x,y);
-					personaje1.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/9.png")));
-					contenedor_personaje.add(personaje1);
+					
+					Thread tx = new Thread() {
+						String[] combo = {"/combatateball/goku/9.png",
+										"/combatateball/goku/13.png", 
+										"/combatateball/goku/16.png",
+										"/combatateball/goku/7.png",
+										"/combatateball/goku/10.png"};
+						public void run() {
+							 for (int i = 0; i < 6; i++) {
+									
+						    		personaje1.setLocation(x,y);
+									personaje1.setIcon(new ImageIcon(ventana.class.getResource(combo[i])));
+									contenedor_personaje.add(personaje1); 
+									
+									
+											 try {
+													 Thread.sleep(800);
+													 
+												} catch (InterruptedException e) {
+													Logger.getLogger(ventana.class.getName()).log(Level.SEVERE,null,e);
+												}
+							
+								 }
+							
+						}
+					};
+					tx.start();
+					
 				
 					break;
 				case KeyEvent.VK_Z:
-					personaje1.setLocation(x,y);
-					personaje1.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/8.png")));
-					contenedor_personaje.add(personaje1);
-				
+					Thread tz = new Thread() {
+						String[] combo = {"/combatateball/goku/1.png",
+										"/combatateball/goku/2.png", 
+										"/combatateball/goku/8.png",
+										"/combatateball/goku/18.png"};
+						public void run() {
+							 for (int i = 0; i < 6; i++) {
+									
+						    		personaje1.setLocation(x,y);
+									personaje1.setIcon(new ImageIcon(ventana.class.getResource(combo[i])));
+									contenedor_personaje.add(personaje1); 
+									
+									
+											 try {
+													 Thread.sleep(800);
+													 
+												} catch (InterruptedException e) {
+													Logger.getLogger(ventana.class.getName()).log(Level.SEVERE,null,e);
+												}
+							
+								 }
+							
+						}
+					};
+					tz.start();
+					
 				
 					break;
 				case KeyEvent.VK_C:
 					personaje1.setLocation(x,y);
-					personaje1.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/21.png")));
+					personaje1.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/30.png")));
 					contenedor_personaje.add(personaje1);
 					
 					ataques.setLocation(x + 98, y + 2);
 				    ataques.setIcon(new ImageIcon(ventana.class.getResource("/ataques/17.png")));
 				    contenedor_personaje.add(ataques);
 					break;
-				case KeyEvent.VK_V:
-						String[] combov = {"/combatateball/goku/20.png",
-											"/combatateball/goku/13.png", 
-											"/combatateball/goku/1.png",
-											"/combatateball/goku/21.png"};
+				case KeyEvent.VK_H:
+					if(vidajugador1.getValue()>0) {
+						vidajugador1.setValue(vidajugador1.getValue()-10);
+						
+					}else {
+					
+						JOptionPane.showMessageDialog(vidajugador1,"perdiste ok");
+					}
+					
+					break;
+				case KeyEvent.VK_V :
+					personaje1.setLocation(x,y);
+					personaje1.setIcon(new ImageIcon(ventana.class.getResource("/combatateball/goku/9.png")));
+					contenedor_personaje.add(personaje1);
+							
 						
 								
-								 for (int i = 0; i < combov.length; i++) {
-						    		personaje1.setLocation(x,y);
-									personaje1.setIcon(new ImageIcon(ventana.class.getResource(combov[i])));
-									contenedor_personaje.add(personaje1); 
-									System.out.println(personaje1);
-											 try {
-													 Thread.sleep(300);
-													 
-												} catch (InterruptedException e) {
-													// TODO Auto-generated catch block
-													e.printStackTrace();
-												}
-							
-								 }
-							
+								
 				        
 					break;
 				case KeyEvent.VK_Y:
